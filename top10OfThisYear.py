@@ -13,18 +13,13 @@ def top10OfThisYear(type):
     data = content[start+2 : end-1]
     L = data.split('","')
     for e in L:
-        # print e
         r = e.split(',')
-        # print('{0} {1:>7}% {2} {3}'.format(r[0], r[14], r[3], r[1]))
         msg += '{0} {1:>7}% {2} {3}\n'.format(r[0], r[14], r[3], r[1])
 
 
-
 if __name__ == '__main__':
-    # print('-'*10 + 'top10 股票型' + '-'*10)
-    msg += '-'*10 + 'top10 股票型' + '-'*10 + '\n'
-    top10OfThisYear('gp')
-    # print('-'*10 + 'top10 混合型' + '-'*10)
     msg += '-'*10 + 'top10 混合型' + '-'*10 + '\n'
     top10OfThisYear('hh')
+    msg += '-' * 10 + 'top10 股票型' + '-' * 10 + '\n'
+    top10OfThisYear('gp')
     print(msg)
