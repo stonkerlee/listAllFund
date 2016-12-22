@@ -42,9 +42,10 @@ def print_by_matplotlib(data):
     plt.ylim(ymax=earning_max+5)
     ax = plt.axes()
     ax.xaxis.set_major_locator(ticker.FixedLocator(range(1, 11)))
+    gap = 0.5 if earning_max > 50 else 0.2
 
     for i in range(len(earning_list)):
-        plt.text(i+0.77, earning_list[i] + 1,
+        plt.text(i+0.77, earning_list[i] + gap,
                  unicode(earning_list[i]) + u'%\n' + name_list[i],
                  fontsize=9)
 
