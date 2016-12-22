@@ -9,17 +9,22 @@ def top10OfYear(year):
     end = content.find(']')
     data = content[start + 2: end - 1]
     L = data.split('","')
+    result = []
     for e in L:
-        # print e
         r = e.split(',')
-        print('{0} {1}% {2}'.format(r[0], r[18], r[1]))
+        result.append((r[0], r[18], r[1]))
+    return (year, result)
+
+def print_by_text(data):
+    year = data[0]
+    data_list = data[1]
+    print('-' * 10 + 'top10 of {0}'.format(year) + '-' * 10)
+    for d in data_list:
+        print('{0} {1:>8}% {2}'.format(d[0], d[1], d[2]))
 
 
-print('-'*10 + 'top10 of 2015' + '-'*10)
-top10OfYear('2015')
-print('-'*10 + 'top10 of 2014' + '-'*10)
-top10OfYear('2014')
-print('-'*10 + 'top10 of 2013' + '-'*10)
-top10OfYear('2013')
-print('-'*10 + 'top10 of 2012' + '-'*10)
-top10OfYear('2012')
+if __name__ == '__main__':
+    print_by_text(top10OfYear('2015'))
+    print_by_text(top10OfYear('2014'))
+    print_by_text(top10OfYear('2013'))
+    print_by_text(top10OfYear('2012'))
