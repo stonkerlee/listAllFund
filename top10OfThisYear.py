@@ -20,7 +20,7 @@ def top10OfThisYear(type):
         result.append((r[0], r[14], r[3], r[1]))
     return (type, result)
 
-def print_by_text(data):
+def display_by_text(data):
     type = data[0]
     print('-'*10 + TYPE_STR_MAPPING[type] + '-'*10)
     data_list = data[1]
@@ -29,7 +29,7 @@ def print_by_text(data):
         msg += '{0} {1:>7}% {2} {3}\n'.format(d[0], d[1], d[2], d[3])
     print msg
 
-def print_by_matplotlib(data):
+def display_by_matplotlib(data):
     type = data[0]
     data_list = data[1]
     date = data_list[0][2]
@@ -54,7 +54,7 @@ def print_by_matplotlib(data):
 
 
 if __name__ == '__main__':
-    # print_by_text(top10OfThisYear('hh'))
-    # print_by_text(top10OfThisYear('gp'))
-    print_by_matplotlib(top10OfThisYear('hh'))
-    # print_by_matplotlib(top10OfThisYear('gp'))
+    # display_by_text(top10OfThisYear('hh'))
+    # display_by_text(top10OfThisYear('gp'))
+    display_by_matplotlib(top10OfThisYear('hh'))
+    # display_by_matplotlib(top10OfThisYear('gp'))
