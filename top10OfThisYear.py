@@ -39,15 +39,14 @@ def print_by_matplotlib(data):
     plt.title(unicode(date) + u' top10 ' + unicode(TYPE_STR_MAPPING[type], encoding='utf-8'))
     plt.ylabel('Percent')
     ax = plt.axes()
-    ax.xaxis.set_major_locator(ticker.FixedLocator([x+1 for x in range(10)]))
+    ax.xaxis.set_major_locator(ticker.FixedLocator(range(1, 11)))
 
     for i in range(len(earning_list)):
         plt.text(i+0.77, earning_list[i] + 1,
                  unicode(earning_list[i]) + u'%\n' + name_list[i],
                  fontsize=9)
 
-    plt.bar([x+1 for x in range(len(earning_list))],
-            earning_list, align='center', width=0.5)
+    plt.bar(range(1, 11), earning_list, align='center', width=0.5)
     plt.show()
 
 
