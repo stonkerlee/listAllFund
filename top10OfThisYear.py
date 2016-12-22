@@ -34,10 +34,12 @@ def print_by_matplotlib(data):
     data_list = data[1]
     date = data_list[0][2]
     earning_list = [float(d[1]) for d in data_list]
+    earning_max = earning_list[0]
     name_list = [unicode(d[3], encoding='utf-8') for d in data_list]
 
     plt.title(unicode(date) + u' top10 ' + unicode(TYPE_STR_MAPPING[type], encoding='utf-8'))
     plt.ylabel('Percent')
+    plt.ylim(ymax=earning_max+5)
     ax = plt.axes()
     ax.xaxis.set_major_locator(ticker.FixedLocator(range(1, 11)))
 
