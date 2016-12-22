@@ -15,7 +15,7 @@ def top10OfYear(year):
         result.append((r[0], r[18], r[1]))
     return (year, result)
 
-def print_by_text(data):
+def display_by_text(data):
     year = data[0]
     data_list = data[1]
     print('-' * 10 + 'top10 of {0}'.format(year) + '-' * 10)
@@ -24,7 +24,7 @@ def print_by_text(data):
 
 
 if __name__ == '__main__':
-    print_by_text(top10OfYear('2015'))
-    print_by_text(top10OfYear('2014'))
-    print_by_text(top10OfYear('2013'))
-    print_by_text(top10OfYear('2012'))
+    display_by_text(top10OfYear('2015'))
+    display_by_text(top10OfYear('2014'))
+    display_by_text(top10OfYear('2013'))
+    display_by_text(top10OfYear('2012'))
