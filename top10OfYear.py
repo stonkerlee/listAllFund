@@ -1,4 +1,7 @@
 import urllib2
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
 
 def top10OfYear(year):
     URL = 'http://fund.eastmoney.com/data/rankhandler.aspx?' \
@@ -22,9 +25,34 @@ def display_by_text(data):
     for d in data_list:
         print('{0} {1:>8}% {2}'.format(d[0], d[1], d[2]))
 
+def display_by_matplotlib(data):
+    year = data[0]
+    data_list = data[1]
+    name_list = [unicode(d[2], encoding='utf-8') for d in data_list]
+
+    plt.title("{0} top10 funds".format(year))
+    X = np.arange(1, 11)
+    Y = [float(d[1]) for d in data_list]
+    plt.ylim(ymax=Y[0] + 30)
+    plt.xticks(X, X)
+    plt.ylabel('Percent')
+    text_x = X
+    text_y = Y
+    for i in range(10):
+        plt.text(text_x[i] - 0.23, text_y[i] + 1.5,
+                 unicode(Y[i]) + u'%\n' + name_list[i],
+                 fontsize=9)
+
+    plt.bar(X, Y, width=0.5, align='center')
+    plt.show()
+
 
 if __name__ == '__main__':
-    display_by_text(top10OfYear('2015'))
-    display_by_text(top10OfYear('2014'))
-    display_by_text(top10OfYear('2013'))
-    display_by_text(top10OfYear('2012'))
+    # display_by_text(top10OfYear('2015'))
+    # display_by_text(top10OfYear('2014'))
+    # display_by_text(top10OfYear('2013'))
+    # display_by_text(top10OfYear('2012'))
+    display_by_matplotlib(top10OfYear('2015'))
+    # display_by_matplotlib(top10OfYear('2014'))
+    # display_by_matplotlib(top10OfYear('2013'))
+    # display_by_matplotlib(top10OfYear('2012'))
