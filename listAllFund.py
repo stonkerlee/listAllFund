@@ -26,7 +26,8 @@ def listAllFund():
     content = urllib2.urlopen(URL).read()
     parse(content, result)
     print('Total number: ' + str(len(result)))
+    # result is list of (fund_id, name)
     return result
 
-
-listAllFund()
+if __name__ == '__main__':
+    listAllFund()
