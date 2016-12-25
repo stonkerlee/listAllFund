@@ -8,6 +8,7 @@ import urllib2
 import re
 import logging
 import csv
+import listAllFund
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -53,5 +54,8 @@ def save_to_csv(data):
     save_file.close()
 
 if __name__ == '__main__':
-    data = scrape_fund('000831')
-    save_to_csv(data)
+    # data = scrape_fund('000831')
+    # save_to_csv(data)
+    for fund in listAllFund.listAllFund():
+        fund_id = fund[0]
+        save_to_csv(scrape_fund(fund_id))
