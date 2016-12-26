@@ -72,6 +72,7 @@ def display_by_matplotlib(fund_id):
 
     plt.plot_date(dates, values, linestyle='-')
     plt.grid(True)
+    plt.title(fund_id)
     plt.show()
 
 if __name__ == '__main__':
