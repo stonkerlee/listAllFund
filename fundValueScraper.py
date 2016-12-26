@@ -8,6 +8,9 @@ import urllib2
 import re
 import logging
 import csv
+import dateutil.parser as dateparser
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 import listAllFund
 
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -53,9 +56,28 @@ def save_to_csv(data):
     writer.writerows(values)
     save_file.close()
 
+def display_by_matplotlib(fund_id):
+    open_file = open('{0}.csv'.format(fund_id))
+    reader = csv.reader(open_file)
+    # skip header
+    reader.next()
+    dates = []
+    values = []
+    for row in reader:
+        dates.append(dateparser.parse(row[0]))
+        values.append(float(row[1]))
+    dates.reverse()
+    values.reverse()
+    open_file.close()
+
+    plt.plot_date(dates, values, linestyle='-')
+    plt.grid(True)
+    plt.show()
+
 if __name__ == '__main__':
     # data = scrape_fund('000831')
     # save_to_csv(data)
     for fund in listAllFund.listAllFund():
         fund_id = fund[0]
         save_to_csv(scrape_fund(fund_id))
+    # display_by_matplotlib('000831')
